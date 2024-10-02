@@ -1,9 +1,9 @@
 import numpy as np
-from rl_mdp.mdp.abstract_mdp import AbstractMDP
-from rl_mdp.mdp.mdp import MDP
-from rl_mdp.mdp.reward_function import RewardFunction
-from rl_mdp.mdp.transition_function import TransitionFunction
-from rl_mdp.policy.policy import Policy
+from mdp.abstract_mdp import AbstractMDP
+from mdp.mdp import MDP
+from mdp.reward_function import RewardFunction
+from mdp.transition_function import TransitionFunction
+from policy.policy import Policy
 
 
 def create_mdp() -> AbstractMDP:

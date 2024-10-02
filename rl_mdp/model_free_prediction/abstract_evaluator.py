@@ -1,6 +1,6 @@
 import numpy as np
 from abc import ABC, abstractmethod
-from rl_mdp.policy.abstract_policy import AbstractPolicy
+from policy.abstract_policy import AbstractPolicy
 
 
 class AbstractEvaluator(ABC):

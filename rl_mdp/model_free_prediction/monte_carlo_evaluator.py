@@ -1,9 +1,9 @@
 from collections import defaultdict
 from typing import List, Tuple
 import numpy as np
-from rl_mdp.mdp.abstract_mdp import AbstractMDP
-from rl_mdp.model_free_prediction.abstract_evaluator import AbstractEvaluator
-from rl_mdp.policy.abstract_policy import AbstractPolicy
+from mdp.abstract_mdp import AbstractMDP
+from model_free_prediction.abstract_evaluator import AbstractEvaluator
+from policy.abstract_policy import AbstractPolicy
 
 
 class MCEvaluator(AbstractEvaluator):
@@ -57,4 +57,21 @@ class MCEvaluator(AbstractEvaluator):
 
         :param episode: A list of (state, action, reward) tuples.
         """
-        pass
+        visited = []
+        n = len(episode)
+        
+        for t in range(n):
+            state, action, reward = episode[t]
+            
+            #has visited?
+            if state not in visited:
+                G = 0
+                for i, k in enumerate(range(t, n)):
+                    G += self.env.discount_factor**i * episode[k][2]
+
+                self.returns[state].append(G)
+                
+                self.value_fun[state] = sum(self.returns[state]) / len(self.returns[state])
+                visited.append(state)
+        
+        return episode
