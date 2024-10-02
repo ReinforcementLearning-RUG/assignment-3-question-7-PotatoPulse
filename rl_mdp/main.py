@@ -10,7 +10,7 @@ def main() -> None:
     Starting point of the program, you can instantiate any classes, run methods/functions here as needed.
     """
     
-    n = 10000
+    n = 1000
     MDP = create_mdp()
     policy1 = create_policy_1()
     policy2 = create_policy_2()
